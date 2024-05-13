@@ -35,7 +35,7 @@ const MovieList: React.FC = () => {
 
   return (
     <div className="home-container">
-      <h1>List of all TV shows goes here</h1>
+      <h1>List of all Movies goes here</h1>
 
       <div className="home-grid">
         {movies.map((movie, index) => (

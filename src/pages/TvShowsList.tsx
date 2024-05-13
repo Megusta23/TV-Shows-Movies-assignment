@@ -5,18 +5,29 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const Details: React.FC = () => {
-  const oprtions = {
+  const [tvSeries, setTvSeries] = useState<any[]>([]);
+
+  const options = {
     method: "GET",
     headers: {
       accept: "application/json",
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiOTRhNjhkMGFlNGJkMWYxOTlkZmY0NDMwZTYyZTg0ZSIsInN1YiI6IjY2NDIzNjhlYmEyNzc2ZmFkZjk2OGM4NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.bkE4ab6qINh36wdHBnMGsbP1czbFFLjqE7ZHBKPMEK8",
     },
   };
 
   useEffect(() => {
     axios
-      .get(``)
+      .get(
+        `https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1`,
+        options
+      )
       .then((response) => {
-        const data = response.data;
+        const data = response.data.results;
+
+        setTvSeries(data);
+
+        console.log(data);
       })
       .catch((error) => {
         console.error("Error: ", error);
@@ -24,11 +35,21 @@ const Details: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <div className="home-container">
       <h1>List of all TV shows goes here</h1>
 
-      <Link to="/tv-shows/1">Tv Show 1</Link>
-      <Link to="/tv-shows/2">Tv Show 2</Link>
+      <div className="home-grid">
+        {tvSeries.map((tvSeries, index) => (
+          <div key={index} className="individual-card-component">
+            {/* Movie details */}
+            <p>Title: {tvSeries.name}</p>
+            <p>id: {tvSeries.id}</p>
+            <Link to={`/tv-shows/${tvSeries.id}`}>
+              To details about the TV series
+            </Link>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
