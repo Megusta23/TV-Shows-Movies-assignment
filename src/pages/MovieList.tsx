@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import "../styles/home.css";
 
 const MovieList: React.FC = () => {
-  const [movies, setMovies] = useState<any[]>([]);
+  const [movies, setMovies] = useState<any[] | null>(null);
 
   const options = {
     method: "GET",
@@ -33,18 +33,28 @@ const MovieList: React.FC = () => {
 
   return (
     <div className="home-container">
-      <h1>List of all Movies goes here</h1>
+      {movies ? (
+        <div>
+          <h1>List of all Movies goes here</h1>
 
-      <div className="home-grid">
-        {movies.map((movie, index) => (
-          <div key={index} className="individual-card-component">
-            {/* Movie details */}
-            <p>Title: {movie.original_title}</p>
-            <p>id: {movie.id}</p>
-            <Link to={`/movies/${movie.id}`}>To details about movie</Link>
+          <div className="home-grid">
+            {movies.map((movie, index) => (
+              <div key={index} className="individual-card-component">
+                {/* Movie details */}
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                  alt="poster_path"
+                />
+                <p>{movie.original_title}</p>
+                <p>id: {movie.id}</p>
+                <Link to={`/movies/${movie.id}`}>To details about movie</Link>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
   );
 };

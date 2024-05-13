@@ -5,7 +5,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const Details: React.FC = () => {
-  const [tvSeries, setTvSeries] = useState<any[]>([]);
+  const [tvSeries, setTvSeries] = useState<any[] | null>(null);
 
   const options = {
     method: "GET",
@@ -35,19 +35,26 @@ const Details: React.FC = () => {
   return (
     <div className="home-container">
       <h1>List of all TV shows goes here</h1>
-
-      <div className="home-grid">
-        {tvSeries.map((tvSeries, index) => (
-          <div key={index} className="individual-card-component">
-            {/* Movie details */}
-            <p>Title: {tvSeries.name}</p>
-            <p>id: {tvSeries.id}</p>
-            <Link to={`/tv-shows/${tvSeries.id}`}>
-              To details about the TV series
-            </Link>
-          </div>
-        ))}
-      </div>
+      {tvSeries ? (
+        <div className="home-grid">
+          {tvSeries.map((tvSeries, index) => (
+            <div key={index} className="individual-card-component">
+              {/* Movie details */}
+              <img
+                src={`https://image.tmdb.org/t/p/w500${tvSeries.poster_path}`}
+                alt="poster_path"
+              />
+              <p>{tvSeries.name}</p>
+              <p>id: {tvSeries.id}</p>
+              <Link to={`/tv-shows/${tvSeries.id}`}>
+                To details about the TV series
+              </Link>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
   );
 };
