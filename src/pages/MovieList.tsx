@@ -25,8 +25,6 @@ const MovieList: React.FC = () => {
         const data = response.data.results;
 
         setMovies(data);
-
-        console.log(data);
       })
       .catch((error) => {
         console.error("Error: ", error);

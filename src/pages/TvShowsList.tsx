@@ -26,8 +26,6 @@ const Details: React.FC = () => {
         const data = response.data.results;
 
         setTvSeries(data);
-
-        console.log(data);
       })
       .catch((error) => {
         console.error("Error: ", error);
