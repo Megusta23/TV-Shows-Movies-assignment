@@ -1,6 +1,28 @@
 import { Link } from "react-router-dom";
 
+import axios from "axios";
+
+import { useEffect, useState } from "react";
+
 const Details: React.FC = () => {
+  const oprtions = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+    },
+  };
+
+  useEffect(() => {
+    axios
+      .get(``)
+      .then((response) => {
+        const data = response.data;
+      })
+      .catch((error) => {
+        console.error("Error: ", error);
+      });
+  }, []);
+
   return (
     <div>
       <h1>List of all TV shows goes here</h1>
