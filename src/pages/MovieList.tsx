@@ -3,6 +3,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import "../styles/home.css";
 
+import star from "../assets/star.svg";
+
 const MovieList: React.FC = () => {
   const [movies, setMovies] = useState<any[] | null>(null);
 
@@ -33,24 +35,36 @@ const MovieList: React.FC = () => {
 
   return (
     <div className="home-container">
+      <div className="text-container">
+        <h1>Top Movie showcase: The Best of the best</h1>
+        <p>
+          Prepare to be dazzled by an exclusive selection of critically
+          acclaimed films that have captivated audiences worldwide. From
+          timeless classics to modern masterpieces, our showcase celebrates the
+          pinnacle of cinematic excellence.
+        </p>
+      </div>
       {movies ? (
-        <div>
-          <h1>List of all Movies goes here</h1>
-
-          <div className="home-grid">
-            {movies.map((movie, index) => (
-              <div key={index} className="individual-card-component">
-                {/* Movie details */}
+        <div className="home-grid">
+          {movies.map((movie, index) => (
+            <div key={index} className="individual-card-component">
+              {/* Movie details */}
+              <Link to={`/movies/${movie.id}`}>
                 <img
                   src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                   alt="poster_path"
+                  className="main-card-image"
                 />
-                <p>{movie.original_title}</p>
-                <p>id: {movie.id}</p>
-                <Link to={`/movies/${movie.id}`}>To details about movie</Link>
+              </Link>
+              <div className="title-rating-container">
+                <div className="rating">
+                  <img src={star} alt="star" />
+                  <p>8.2</p>
+                </div>
+                <p className="text single-line">{movie.original_title}</p>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       ) : (
         <p>Loading...</p>
@@ -60,3 +74,5 @@ const MovieList: React.FC = () => {
 };
 
 export default MovieList;
+
+//<Link to={`/movies/${movie.id}`}>To details about movie</Link>

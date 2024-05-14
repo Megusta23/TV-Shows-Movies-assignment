@@ -4,6 +4,8 @@ import axios from "axios";
 
 import { useEffect, useState } from "react";
 
+import star from "../assets/star.svg";
+
 const Details: React.FC = () => {
   const [tvSeries, setTvSeries] = useState<any[] | null>(null);
 
@@ -34,21 +36,35 @@ const Details: React.FC = () => {
 
   return (
     <div className="home-container">
-      <h1>List of all TV shows goes here</h1>
+      <div className="text-container">
+        <h1>Top TV Show showcase: The Best of the best</h1>
+        <p>
+          Discover the epitome of television entertainment with our curated
+          selection of top-rated TV shows. From gripping dramas to hilarious
+          comedies, experience the finest in small-screen storytelling that has
+          captivated audiences worldwide.
+        </p>
+      </div>
       {tvSeries ? (
         <div className="home-grid">
           {tvSeries.map((tvSeries, index) => (
             <div key={index} className="individual-card-component">
               {/* Movie details */}
-              <img
-                src={`https://image.tmdb.org/t/p/w500${tvSeries.poster_path}`}
-                alt="poster_path"
-              />
-              <p>{tvSeries.name}</p>
-              <p>id: {tvSeries.id}</p>
               <Link to={`/tv-shows/${tvSeries.id}`}>
-                To details about the TV series
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${tvSeries.poster_path}`}
+                  alt="poster_path"
+                  className="main-card-image"
+                />
               </Link>
+
+              <div className="title-rating-container">
+                <div className="rating">
+                  <img src={star} alt="star" />
+                  <p>8.2</p>
+                </div>
+                <p className="text single-line">{tvSeries.name}</p>
+              </div>
             </div>
           ))}
         </div>

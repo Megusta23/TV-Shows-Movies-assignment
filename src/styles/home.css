@@ -2,12 +2,70 @@
     margin: 4rem;
 }
 
-.home-container h1 {
+.text-container {
+    margin-bottom: 4rem;
+}
+
+.text-container h1 {
     margin-bottom: 2rem;
+    width: 70%;
+}
+
+.text-container p {
+    width: 60%;
 }
 
 .home-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 2rem;
+}
+
+.individual-card-component {
+    background-color: #0F172A;
+    border-radius: 4px;
+    color: white;
+}
+
+.main-card-image {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.main-card-image:hover {
+    opacity: 0.5;
+}
+
+.title-rating-container {
+    padding: 1rem;
+    width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.text.single-line {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: 600;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.rating img {
+    width: 10%;
+    margin-right: 4px;
+}
+
+.rating p {
+    color: #CBD5E1;
 }
