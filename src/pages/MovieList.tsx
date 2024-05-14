@@ -59,7 +59,7 @@ const MovieList: React.FC = () => {
               <div className="title-rating-container">
                 <div className="rating">
                   <img src={star} alt="star" />
-                  <p>8.2</p>
+                  <p>{movie.vote_average.toFixed(1)}</p>
                 </div>
                 <p className="text single-line">{movie.original_title}</p>
               </div>

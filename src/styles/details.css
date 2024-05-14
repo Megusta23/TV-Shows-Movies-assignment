@@ -2,6 +2,46 @@
     margin: 4rem;
 }
 
-.individual-card-component img {
+.flex-title-rating {
+    display: flex;
+    align-items: inherit;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.IMDB-rating {
+    display: flex;
+}
+
+.IMDB-rating img {
+    width: 36px;
+    margin-right: 6px;
+}
+
+.image-video-container {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.image-video-container img {
+    width: 30%;
+}
+
+.video {
     width: 100%;
+    height: auto;
+    background-color: black;
+    margin-left: 1rem;
+}
+
+.movie-categories-container {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.movie-categories-container p {
+    border: 2px #0F172A solid;
+    border-radius: 50px;
+    padding: 0.1rem 1.2rem;
+    margin-right: 1rem;
 }
