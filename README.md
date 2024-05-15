@@ -30,6 +30,8 @@ npm run dev
 
 And that's it, you are now running this website on your local machine!
 
+If you have any problems running this page locally, you could always visit it [Here](https://tv-shows-movies-assignment.vercel.app/movies)
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
