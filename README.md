@@ -1,4 +1,4 @@
-# React + TypeScript + Vite
+# TOP 10 Movies/Shows
 
 ## Getting Started
 
