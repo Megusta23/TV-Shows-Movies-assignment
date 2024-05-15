@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "../styles/details.css";
+import { Link } from "react-router-dom";
 
 import star from "../assets/star.svg";
 
@@ -58,6 +59,7 @@ const TvShows: React.FC = () => {
             {tvShowDetails ? (
               <>
                 {/* This containes the main title and some additional data */}
+                <Link to={`/tv-shows`}>&#11207; Back</Link>
                 <div className="flex-title-rating">
                   <div className="title-container">
                     <h1>{tvShowDetails.name}</h1>

@@ -5,7 +5,7 @@ import "../styles/home.css";
 
 import star from "../assets/star.svg";
 
-const MovieList: React.FC = () => {
+const MovieList: React.FC<{ search: string }> = ({ search }) => {
   const [movies, setMovies] = useState<any[] | null>(null);
 
   const options = {
@@ -46,25 +46,33 @@ const MovieList: React.FC = () => {
       </div>
       {movies ? (
         <div className="home-grid">
-          {movies.map((movie, index) => (
-            <div key={index} className="individual-card-component">
-              {/* Movie details */}
-              <Link to={`/movies/${movie.id}`}>
-                <img
-                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                  alt="poster_path"
-                  className="main-card-image"
-                />
-              </Link>
-              <div className="title-rating-container">
-                <div className="rating">
-                  <img src={star} alt="star" />
-                  <p>{movie.vote_average.toFixed(1)}</p>
+          {movies
+            .filter((item) => {
+              return search.length >= 3
+                ? item.original_title
+                    .toLowerCase()
+                    .includes(search.toLowerCase())
+                : true;
+            })
+            .map((movie, index) => (
+              <div key={index} className="individual-card-component">
+                {/* Movie details */}
+                <Link to={`/movies/${movie.id}`}>
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                    alt="poster_path"
+                    className="main-card-image"
+                  />
+                </Link>
+                <div className="title-rating-container">
+                  <div className="rating">
+                    <img src={star} alt="star" />
+                    <p>{movie.vote_average.toFixed(1)}</p>
+                  </div>
+                  <p className="text single-line">{movie.original_title}</p>
                 </div>
-                <p className="text single-line">{movie.original_title}</p>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
       ) : (
         <p>Loading...</p>

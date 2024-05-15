@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 import star from "../assets/star.svg";
 
-const Details: React.FC = () => {
+const Details: React.FC<{ search: string }> = ({ search }) => {
   const [tvSeries, setTvSeries] = useState<any[] | null>(null);
 
   const options = {
@@ -47,26 +47,32 @@ const Details: React.FC = () => {
       </div>
       {tvSeries ? (
         <div className="home-grid">
-          {tvSeries.map((tvSeries, index) => (
-            <div key={index} className="individual-card-component">
-              {/* Movie details */}
-              <Link to={`/tv-shows/${tvSeries.id}`}>
-                <img
-                  src={`https://image.tmdb.org/t/p/w500${tvSeries.poster_path}`}
-                  alt="poster_path"
-                  className="main-card-image"
-                />
-              </Link>
+          {tvSeries
+            .filter((item) => {
+              return search.length >= 3
+                ? item.name.toLowerCase().includes(search.toLowerCase())
+                : true;
+            })
+            .map((tvSeries, index) => (
+              <div key={index} className="individual-card-component">
+                {/* Movie details */}
+                <Link to={`/tv-shows/${tvSeries.id}`}>
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500${tvSeries.poster_path}`}
+                    alt="poster_path"
+                    className="main-card-image"
+                  />
+                </Link>
 
-              <div className="title-rating-container">
-                <div className="rating">
-                  <img src={star} alt="star" />
-                  <p>8.2</p>
+                <div className="title-rating-container">
+                  <div className="rating">
+                    <img src={star} alt="star" />
+                    <p>{tvSeries.vote_average.toFixed(1)}</p>
+                  </div>
+                  <p className="text single-line">{tvSeries.name}</p>
                 </div>
-                <p className="text single-line">{tvSeries.name}</p>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
       ) : (
         <p>Loading...</p>

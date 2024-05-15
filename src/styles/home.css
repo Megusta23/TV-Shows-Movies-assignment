@@ -69,3 +69,90 @@
 .rating p {
     color: #CBD5E1;
 }
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 1275px) {
+    .text-container h1 {
+        width: 90%;
+    }
+
+    .text-container p {
+        width: 80%;
+    }
+
+    .home-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .title-rating-container {
+        width: 150px;
+    }
+}
+
+
+@media screen and (max-width: 992px) {
+    .text-container h1 {
+        width: 80%;
+    }
+
+    .text-container p {
+        width: 70%;
+    }
+
+    .home-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .title-rating-container {
+        width: 150px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .home-container {
+        margin: 2rem;
+    }
+
+    .text-container h1 {
+        width: 90%;
+    }
+
+    .text-container p {
+        width: 80%;
+    }
+
+    .home-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .title-rating-container {
+        width: 120px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .text-container h1 {
+        width: 100%;
+        text-align: center;
+    }
+
+    .text-container p {
+        width: 100%;
+        text-align: center;
+    }
+
+    .home-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .title-rating-container {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .title-rating-container img {
+        width: 100%;
+    }
+}
