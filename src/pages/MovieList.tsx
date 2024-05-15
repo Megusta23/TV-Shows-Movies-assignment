@@ -82,5 +82,3 @@ const MovieList: React.FC<{ search: string }> = ({ search }) => {
 };
 
 export default MovieList;
-
-//<Link to={`/movies/${movie.id}`}>To details about movie</Link>

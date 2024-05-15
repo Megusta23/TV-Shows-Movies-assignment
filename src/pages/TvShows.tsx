@@ -1,8 +1,7 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "../styles/details.css";
-import { Link } from "react-router-dom";
 
 import star from "../assets/star.svg";
 
@@ -20,6 +19,7 @@ const TvShows: React.FC = () => {
   const [tvShowDetails, setTvShowDetails] = useState<TvShowDetails | null>(
     null
   );
+  const navigate = useNavigate();
 
   const options = {
     method: "GET",
@@ -59,7 +59,7 @@ const TvShows: React.FC = () => {
             {tvShowDetails ? (
               <>
                 {/* This containes the main title and some additional data */}
-                <Link to={`/tv-shows`}>&#11207; Back</Link>
+                <button onClick={() => navigate(-1)}>&#11207; Back</button>
                 <div className="flex-title-rating">
                   <div className="title-container">
                     <h1>{tvShowDetails.name}</h1>
@@ -78,7 +78,6 @@ const TvShows: React.FC = () => {
                     </div>
                   </div>
                 </div>
-
                 <div className="image-video-container">
                   <img
                     src={`https://image.tmdb.org/t/p/w500${tvShowDetails.poster_path}`}
@@ -86,13 +85,11 @@ const TvShows: React.FC = () => {
                   />
                   <div className="video"></div>
                 </div>
-
                 <div className="movie-categories-container">
                   {tvShowDetails.genres.map((genre, index) => (
                     <p key={index}>{genre.name}</p>
                   ))}
                 </div>
-
                 <p>{tvShowDetails.overview}</p>
               </>
             ) : (

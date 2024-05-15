@@ -1,9 +1,6 @@
-import { Link } from "react-router-dom";
-
-import axios from "axios";
-
 import { useEffect, useState } from "react";
-
+import { Link } from "react-router-dom";
+import axios from "axios";
 import star from "../assets/star.svg";
 
 const Details: React.FC<{ search: string }> = ({ search }) => {
@@ -56,7 +53,10 @@ const Details: React.FC<{ search: string }> = ({ search }) => {
             .map((tvSeries, index) => (
               <div key={index} className="individual-card-component">
                 {/* Movie details */}
-                <Link to={`/tv-shows/${tvSeries.id}`}>
+                <Link
+                  to={`/tv-shows/${tvSeries.id}`}
+                  state={{ from: "location" }}
+                >
                   <img
                     src={`https://image.tmdb.org/t/p/w500${tvSeries.poster_path}`}
                     alt="poster_path"

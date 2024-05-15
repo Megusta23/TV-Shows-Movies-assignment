@@ -146,10 +146,14 @@
     }
 
     .title-rating-container {
-        width: 100%;
+        width: 300px;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
+    }
+
+    .rating {
+        margin-right: 1rem;
     }
 
     .title-rating-container img {

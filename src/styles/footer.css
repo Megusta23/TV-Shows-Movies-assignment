@@ -1,0 +1,19 @@
+.footer-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    background-color: #0F172A;
+    color: white;
+}
+
+.footer-container img {
+    margin-left: 6px;
+    width: 10%;
+}
+
+@media screen and (max-width: 576px) {
+    .footer-container img {
+        width: 30%;
+    }
+}

@@ -1,6 +1,6 @@
 import { TvShowsList, TvShow, MoviesList, Movie } from "./pages";
 
-import { Navbar } from "./components";
+import { Footer, Navbar } from "./components";
 
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
@@ -45,6 +45,7 @@ const App = () => {
         />
         <Route path="/tv-shows/:id" element={<TvShow />} />
       </Routes>
+      <Footer />
     </>
   );
 };

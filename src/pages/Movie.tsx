@@ -1,8 +1,7 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "../styles/details.css";
-import { Link } from "react-router-dom";
 
 import star from "../assets/star.svg";
 
@@ -20,6 +19,7 @@ interface MovieDetails {
 const Movie: React.FC = () => {
   const { id } = useParams();
   const [movieDetails, setMovieDetails] = useState<MovieDetails | null>(null);
+  const navigate = useNavigate();
 
   const options = {
     method: "GET",
@@ -56,7 +56,7 @@ const Movie: React.FC = () => {
       {movieDetails ? (
         <>
           {/* This containes the main title and some additional data */}
-          <Link to={`/movies`}>&#11207; Back</Link>
+          <button onClick={() => navigate(-1)}>&#11207; Back</button>
           <div className="flex-title-rating">
             <div className="title-container">
               <h1>{movieDetails.title}</h1>
