@@ -1,5 +1,35 @@
 # React + TypeScript + Vite
 
+## Getting Started
+
+To run this project locally, follow these steps:
+
+1. Clone this repository to your local machine:
+
+```bash
+git clone "HTTPS"
+```
+
+2. Navigate to the project folder:
+
+```bash
+cd project-folder
+```
+
+3. Install dependencies:
+
+```bash
+npm install
+```
+
+4. Run the website:
+
+```bash
+npm run dev
+```
+
+And that's it, you are now running this website on your local machine!
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
@@ -17,12 +47,12 @@ If you are developing a production application, we recommend updating the config
 export default {
   // other rules...
   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
+    ecmaVersion: "latest",
+    sourceType: "module",
+    project: ["./tsconfig.json", "./tsconfig.node.json"],
     tsconfigRootDir: __dirname,
   },
-}
+};
 ```
 
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
