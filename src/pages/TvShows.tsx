@@ -75,7 +75,7 @@ const TvShows: React.FC<{ options: {} }> = ({ options }) => {
                     src={`https://image.tmdb.org/t/p/w500${tvShowDetails.poster_path}`}
                     alt="poster"
                   />
-                  <TVShowVideoPlayer />
+                  <TVShowVideoPlayer id={id} options={options} />
                 </div>
                 <div className="movie-categories-container">
                   {tvShowDetails.genres.map((genre, index) => (
