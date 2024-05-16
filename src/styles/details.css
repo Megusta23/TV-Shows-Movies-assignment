@@ -70,6 +70,14 @@
         flex-direction: column;
     }
 
+    .video {
+        margin: 0;
+    }
+
+    .image-video-container img {
+        margin-bottom: 1rem;
+    }
+
     .image-video-container img {
         width: 100%;
     }
