@@ -3,17 +3,11 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import star from "../assets/star.svg";
 
-const Details: React.FC<{ search: string }> = ({ search }) => {
+const Details: React.FC<{ search: string; options: {} }> = ({
+  search,
+  options,
+}) => {
   const [tvSeries, setTvSeries] = useState<any[] | null>(null);
-
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiOTRhNjhkMGFlNGJkMWYxOTlkZmY0NDMwZTYyZTg0ZSIsInN1YiI6IjY2NDIzNjhlYmEyNzc2ZmFkZjk2OGM4NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.bkE4ab6qINh36wdHBnMGsbP1czbFFLjqE7ZHBKPMEK8",
-    },
-  };
 
   useEffect(() => {
     axios

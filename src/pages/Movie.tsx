@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import "../styles/details.css";
 
 import star from "../assets/star.svg";
+import { VideoPlayer } from "../components";
 
 interface MovieDetails {
   title: string;
@@ -16,19 +17,10 @@ interface MovieDetails {
   genres: { name: string }[];
 }
 
-const Movie: React.FC = () => {
+const Movie: React.FC<{ options: {} }> = ({ options }) => {
   const { id } = useParams();
   const [movieDetails, setMovieDetails] = useState<MovieDetails | null>(null);
   const navigate = useNavigate();
-
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiOTRhNjhkMGFlNGJkMWYxOTlkZmY0NDMwZTYyZTg0ZSIsInN1YiI6IjY2NDIzNjhlYmEyNzc2ZmFkZjk2OGM4NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.bkE4ab6qINh36wdHBnMGsbP1czbFFLjqE7ZHBKPMEK8",
-    },
-  };
 
   useEffect(() => {
     axios
@@ -83,7 +75,8 @@ const Movie: React.FC = () => {
               src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
               alt="poster"
             />
-            <div className="video"></div>
+
+            <VideoPlayer />
           </div>
 
           <div className="movie-categories-container">

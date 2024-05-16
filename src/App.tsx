@@ -8,6 +8,16 @@ import { useState } from "react";
 const App = () => {
   const [search, setSearch] = useState("");
 
+  const HeaderToken = import.meta.env.VITE_HEADER_TOKEN;
+
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${HeaderToken}`,
+    },
+  };
+
   return (
     <>
       <Routes>
@@ -16,7 +26,7 @@ const App = () => {
           element={
             <>
               <Navbar setSearch={setSearch} />
-              <TvShowsList search={search} />
+              <TvShowsList search={search} options={options} />
             </>
           }
         />
@@ -27,11 +37,11 @@ const App = () => {
           element={
             <>
               <Navbar setSearch={setSearch} />
-              <MoviesList search={search} />
+              <MoviesList search={search} options={options} />
             </>
           }
         />
-        <Route path="/movies/:id" element={<Movie />} />
+        <Route path="/movies/:id" element={<Movie options={options} />} />
 
         {/* Routes for the TV Shows section of the page */}
         <Route
@@ -39,11 +49,11 @@ const App = () => {
           element={
             <>
               <Navbar setSearch={setSearch} />
-              <TvShowsList search={search} />
+              <TvShowsList search={search} options={options} />
             </>
           }
         />
-        <Route path="/tv-shows/:id" element={<TvShow />} />
+        <Route path="/tv-shows/:id" element={<TvShow options={options} />} />
       </Routes>
       <Footer />
     </>
