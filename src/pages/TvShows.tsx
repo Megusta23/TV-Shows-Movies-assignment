@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import "../styles/details.css";
 
 import star from "../assets/star.svg";
+import { TVShowVideoPlayer } from "../components";
 
 interface TvShowDetails {
   name: string;
@@ -74,7 +75,7 @@ const TvShows: React.FC<{ options: {} }> = ({ options }) => {
                     src={`https://image.tmdb.org/t/p/w500${tvShowDetails.poster_path}`}
                     alt="poster"
                   />
-                  <div className="video"></div>
+                  <TVShowVideoPlayer />
                 </div>
                 <div className="movie-categories-container">
                   {tvShowDetails.genres.map((genre, index) => (

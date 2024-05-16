@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import "../styles/details.css";
 
 import star from "../assets/star.svg";
-import { VideoPlayer } from "../components";
+import { MovieVideoPlayer } from "../components";
 
 interface MovieDetails {
   title: string;
@@ -76,7 +76,7 @@ const Movie: React.FC<{ options: {} }> = ({ options }) => {
               alt="poster"
             />
 
-            <VideoPlayer />
+            <MovieVideoPlayer id={id} options={options} />
           </div>
 
           <div className="movie-categories-container">
